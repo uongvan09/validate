@@ -1,0 +1,48 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list >
+      <form [formGroup]="signInForm" #signUpForm>
+        <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input formControlName="firstname" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="!signInForm.controls.firstname.valid && (signInForm.controls.firstname.dirty || submitAttempt)">
+          <p>Please enter a valid name</p>
+        </ion-item>
+        <ion-item>
+          <ion-label floating >Last Name</ion-label>
+          <ion-input formControlName="lastname" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating >Age</ion-label>
+          <ion-input formControlName="age" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Username</ion-label>
+          <ion-input formControlName="username" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Privacy</ion-label>
+          <ion-select formControlName="privacy">
+            <ion-option value="public" checked = "true">Public</ion-option>
+            <ion-option value="friends">Friends Only</ion-option>
+            <ion-option value="private">Private</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Bio</ion-label>
+          <ion-textarea formControlName="bio"></ion-textarea>
+        </ion-item>
+      </form>
+  </ion-list>
+  <button ion-button full color="primary" (click)="save()">Create Account</button>
+</ion-content>
